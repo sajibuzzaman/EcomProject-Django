@@ -1,0 +1,106 @@
+{% load static %}
+{% load mptt_tags %}
+{% load ecomtag %}
+{% ecom_cat as category %}
+{% ecom_set as setting %}
+
+
+  <!-- Begin Slider With Category Menu Area -->
+  <div class="slider-with-banner">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Category Menu Area -->
+            <div class="col-lg-3">
+                <!--Category Menu Start-->
+                <div class="category-menu">
+                    <div class="category-heading">
+                        <h2 class="categories-toggle"><span>categories</span></h2>
+                    </div>
+                    <div id="cate-toggle" class="category-menu-list">
+                        <ul>
+                            
+                            {% recursetree category %}
+                            <li class="right-menu"><a href="{% url 'product_category' id=node.id slug=node.slug %}">{{ node.title }}</a>
+                                <ul class="cat-mega-menu">
+                                    {% if not node.is_leaf_node %}
+                                    <li class="right-menu cat-mega-title">
+                                       <a href="shop-left-sidebar.html">Sub Category</a>
+                                        <ul>
+                                            <li><a href="{% url 'product_category' id=node.id  slug=node.slug %}">{{ children }}</a></li>
+                                           
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                    
+                                </ul>
+                            </li>
+                            {% endrecursetree %}
+                                
+                           
+                          
+                        </ul>
+                    </div>
+                </div>
+                <!--Category Menu End-->
+            </div>
+            <!-- Category Menu Area End Here -->
+            <!-- Begin Slider Area -->
+            <div class="col-lg-9">
+                <div class="slider-area pt-sm-30 pt-xs-30">
+                    <div class="slider-active owl-carousel">
+                        <!-- Begin Single Slide Area -->
+
+                        
+                        {% for p in slider_image %}
+                        <div class="single-slide align-center-left animation-style-02 bg-4">
+                            <img style="height: 400px;" src="{{ p.ImageUrl }}"  alt="">
+                            <div class="slider-progress"></div>
+                            <div class="slider-content">
+                                <h5>Sale Offer <span>-20% Off</span> This Week</h5>
+                                <h2>{{ p.title }}</h2>
+                                <h3>Starting at <span>{{ p.new_price }}</span></h3>
+                                <div class="default-btn slide-btn">
+                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                </div>
+                            </div>
+                        </div>
+              
+                        {% endfor %}
+                            
+                       
+                        <!-- Single Slide Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Area End Here -->
+        </div>
+    </div>
+</div>
+<!-- Slider With Category Menu Area End Here -->
+<!-- Begin Li's Static Banner Area -->
+<div class="li-static-banner pt-20 pt-sm-30 pt-xs-30">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Single Banner Area -->
+            
+            {% for p in products %}
+            
+            {% if p.id <= 3  %}
+            <div class="col-lg-4 col-md-4">
+                <div class="single-banner pb-xs-30">
+                    <a href="#">
+                        <img src="{{ p.ImageUrl}}" alt="Li's Static Banner">
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+                
+       
+            {% endfor %}
+                
+           
+            <!-- Single Banner Area End Here -->
+    
+        </div>
+    </div>
+</div>

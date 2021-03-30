@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block title %}
+{{setting.title}}
+{% endblock title %}
+
+{% block description %}
+{{setting.description}}
+{% endblock description %}
+
+{% block keywords %}
+{{setting.keyword}}
+{% endblock keywords %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+<!-- Header Area End Here -->
+<!-- Begin Slider With Banner Area -->
+
+{% block slider %}
+{% include 'slider.html' %}
+{% endblock slider %}
+
+<!-- Slider With Banner Area End Here -->
+<!-- Begin Product Area -->
+
+{% block body %}
+{% include 'content.html' %}
+{% endblock body %}
+
+<!-- Begin Footer Area -->
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

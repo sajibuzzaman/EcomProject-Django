@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+Product-Single
+{% endblock title %}
+
+{% block description %}
+{{setting.description}}
+{% endblock description %}
+
+{% block keywords %}
+{{setting.keyword}}
+{% endblock keywords %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block product-single %}
+
+<div id="breadcrum">
+    <div class="container">
+        <div>
+            <ul class="breadcrumb">
+                <li> <a href="{%url 'home'%}">Home</a></li>
+                >>
+                <li class="active">Completed Order</li>
+            </ul>
+
+        </div>
+        <div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="order-summary clearfix">
+                    <div class="section-title">
+                        <h3 class="title">Order Complated</h3>
+                    </div>
+                  
+                    <h2>Dear {{ user.first_name }} {{  user.last_name }}</h2>
+                    <h3>Your order is completed</h3>
+                    <h3>Order Code : {{ ordercode }}</h3>
+                    <h3>Thank You</h3>
+                    <hr>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
